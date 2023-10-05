@@ -4,4 +4,4 @@ from variable_load_5.py import a
 if __name__ != "__main__":
     exit()
 
-print(a)
+print("{:d}".format(a))
