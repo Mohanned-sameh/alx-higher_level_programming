@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-"""
-class: Rectangle
-methods: __init__, area, perimeter
-"""
+"""Defines a empty Rectangle class"""
 
 
 class Rectangle:
+    """Empty Rectangle class"""
+
     pass
