@@ -89,7 +89,7 @@ class Rectangle:
         Returns:
             Rectangle: a square.
         """
-        return cls(size, size)
+        return Rectangle(size, size)
 
     def area(self):
         """Calculates area of a rectangle.
