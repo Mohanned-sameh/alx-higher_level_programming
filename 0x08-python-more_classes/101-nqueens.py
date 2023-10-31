@@ -117,7 +117,9 @@ def recursive_solve(board, row, queens, solutions):
             tmp_board = board_deepcopy(board)
             tmp_board[row][c] = "Q"
             xout(tmp_board, row, c)
-            solutions = recursive_solve(tmp_board, row + 1, queens + 1, solutions)
+            row = row + 1
+            queens = queens + 1
+            solutions = recursive_solve(tmp_board, row, queens, solutions)
 
     return solutions
 
