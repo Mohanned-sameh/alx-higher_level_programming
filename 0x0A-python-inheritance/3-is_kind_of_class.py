@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-checks if a obj is of instance or is an instance 
+"""checks if a obj is of instance or is an instance
 of a class that inherits from the specified class
 """
 
