@@ -1,13 +1,17 @@
 #!/usr/bin/python3
-from json import dumps
+
+
+import json
 
 """
 function: to_json_string
-args: my_obj
-returns: JSON representation of my_obj
+returns: json representation of an object
 """
 
 
 def to_json_string(my_obj):
-    """JSON representaition of my_obj"""
-    return dumps(my_obj)
+    """function to represent json of an object"""
+    if my_obj is None:
+        return None
+    else:
+        return json.dumps(my_obj)
