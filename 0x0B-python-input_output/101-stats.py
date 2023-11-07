@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""Log parsing script."""
+"""Log parsing script. Reads stdin line by line and computes metrics"""
 import sys
 
 total_size = 0
-codes = {"200": 0, "301": 0, "400": 0,
-        "401": 0, "403": 0, "404": 0,
-        "405": 0, "500": 0}
+codes = {str(code): 0 for code in [200, 301, 400, 401, 403, 404, 405, 500]}
+
 iteration = 0
 
 
