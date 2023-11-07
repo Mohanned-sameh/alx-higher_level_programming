@@ -1,41 +1,50 @@
 #!/usr/bin/python3
-"""Log parsing script. Reads stdin line by line and computes metrics"""
+"""
+Reads from standard input and computes metrics
+"""
 import sys
+import signal
 
 total_size = 0
-codes = {str(code): 0 for code in [200, 301, 400, 401, 403, 404, 405, 500]}
+status_code_counts = {
+    200: 0,
+    301: 0,
+    400: 0,
+    401: 0,
+    403: 0,
+    404: 0,
+    405: 0,
+    500: 0,
+}
+line_count = 0
 
-iteration = 0
+
+def print_statistics():
+    print(f"Total file size: {total_size}")
+    for status_code in sorted(status_code_counts.keys()):
+        count = status_code_counts[status_code]
+        if count > 0:
+            print(f"{status_code}: {count}")
 
 
-def print_stats():
-    """Function that prints a resume of the stats."""
-    print("File size: {}".format(total_size))
-    for k, v in sorted(codes.items()):
-        if v is not 0:
-            print("{}: {}".format(k, v))
+def signal_handler(sig, frame):
+    print_statistics()
+    sys.exit(0)
 
+
+signal.signal(signal.SIGINT, signal_handler)
 
 try:
     for line in sys.stdin:
-        line = line.split()
-        if len(line) >= 2:
-            tmp = iteration
-            if line[-2] in codes:
-                codes[line[-2]] += 1
-                iteration += 1
-            try:
-                total_size += int(line[-1])
-                if tmp == iteration:
-                    iteration += 1
-            except ValueError:
-                if tmp == iteration:
-                    continue
+        parts = line.split()
+        if len(parts) >= 8:
+            status_code = int(parts[8])
+            total_size += int(parts[10])
+            status_code_counts[status_code] += 1
+            line_count += 1
 
-        if iteration % 10 == 0:
-            print_stats()
-
-    print_stats()
+        if line_count % 10 == 0:
+            print_statistics()
 
 except KeyboardInterrupt:
-    print_stats()
+    print_statistics()
