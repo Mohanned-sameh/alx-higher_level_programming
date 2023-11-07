@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-import json
-
 """
-function: load_from_json_file
+function: class_to_json
 args: filename
 """
+import json
 
 
-def load_from_json_file(filename):
-    """
-    load from json file
-    """
+def class_to_json(filename):
+    """returns a dict description with simple data struct"""
     with open(filename, "r") as f:
         return json.load(f)
