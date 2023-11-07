@@ -11,15 +11,15 @@ def main():
     json_list = []
 
     try:
-        save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
-        load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
+        save = __import__("5-save_to_json_file").save_to_json_file
+        load = __import__("6-load_from_json_file").load_from_json_file
 
         if os.path.exists(filename):
-            json_list = load_from_json_file(filename)
+            json_list = load(filename)
 
         json_list.extend(sys.argv[1:])
 
-        save_to_json_file(json_list, filename)
+        save(json_list, filename)
     except ImportError:
         print("Error: Unable to import the necessary modules.")
 
