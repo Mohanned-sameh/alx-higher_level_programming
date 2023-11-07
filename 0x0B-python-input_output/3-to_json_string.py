@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-
+"""
+function: to_json_string
+args: my_obj
+"""
 import json
 
 
