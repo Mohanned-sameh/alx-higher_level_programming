@@ -11,7 +11,7 @@ def append_after(filename="", search_string="", new_string=""):
 
         while index < len(read):
             if search_string in read[index]:
-                read[index : index + 1] = [read[index], new_string]
+                read[index: index + 1] = [read[index], new_string]
                 index += 1
             index += 1
 
