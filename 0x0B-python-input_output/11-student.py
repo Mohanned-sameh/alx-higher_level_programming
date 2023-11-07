@@ -29,7 +29,9 @@ class Student:
                 new_dict[key] = value
         return new_dict
 
-    """Public method: reload_from_json(self, json"""
+    """Public method: reload_from_json(self, json)
+    that replaces all attributes of the Student instance
+    """
 
     def reload_from_json(self, json):
         for key, value in json.items():
