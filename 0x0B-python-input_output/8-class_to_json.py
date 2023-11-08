@@ -5,8 +5,8 @@ args: filename
 """
 
 
-def class_to_json(filename):
+def class_to_json(obj):
     """
     returns a dict description with simple data struct
     """
-    return vars(filename)
+    return vars(obj)
