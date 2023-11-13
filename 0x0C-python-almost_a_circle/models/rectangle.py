@@ -69,13 +69,19 @@ class Rectangle(Base):
 
     def display(self):
         """Prints string representation of this rectangle."""
-        s = "\n" * self.y + (" " * self.x + "#" * self.width + "\n") * self.height
+        s = "\n" * self.y
+        s += (" " * self.x + "#" * self.width + "\n") * self.height
         print(s, end="")
 
     def __str__(self):
         """Returns string info about this rectangle."""
         return "[{}] ({}) {}/{} - {}/{}".format(
-            type(self).__name__, self.id, self.x, self.y, self.width, self.height
+            type(self).__name__,
+            self.id,
+            self.x,
+            self.y,
+            self.width,
+            self.height,
         )
 
     def __update(self, id=None, width=None, height=None, x=None, y=None):

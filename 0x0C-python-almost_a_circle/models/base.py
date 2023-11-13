@@ -73,10 +73,13 @@ class Base:
         from models.square import Square
 
         if list_objs is not None:
-            if cls is Rectangle:
-                list_objs = [[o.id, o.width, o.height, o.x, o.y] for o in list_objs]
-            else:
-                list_objs = [[o.id, o.size, o.x, o.y] for o in list_objs]
+            list_objs = [
+                [o.id, o.width, o.height, o.x, o.y]
+                if cls is Rectangle
+                else [o.id, o.size, o.x, o.y]
+                for o in list_objs
+            ]
+
         with open(
             "{}.csv".format(cls.__name__), "w", newline="", encoding="utf-8"
         ) as f:
@@ -105,7 +108,12 @@ class Base:
                         "y": row[4],
                     }
                 else:
-                    d = {"id": row[0], "size": row[1], "x": row[2], "y": row[3]}
+                    d = {
+                        "id": row[0],
+                        "size": row[1],
+                        "x": row[2],
+                        "y": row[3],
+                    }
                 ret.append(cls.create(**d))
         return ret
 
