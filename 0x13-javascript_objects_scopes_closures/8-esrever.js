@@ -1,7 +1,8 @@
 #!/usr/bin/node
+// reverse a list
 exports.eserver = function (list) {
-  return list.reduceRight(function (array, current) {
-    array.push(current);
-    return array;
-  }, []);
+  list.reduceRight((a, b) => {
+    a.push(b);
+    return a;
+  });
 };
