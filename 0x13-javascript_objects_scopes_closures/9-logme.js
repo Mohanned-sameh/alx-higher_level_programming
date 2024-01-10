@@ -1,6 +1,5 @@
 #!/usr/bin/node
+let count = 0;
 exports.logMe = function (item) {
-  for (const element in item) {
-    console.log(element + ': ' + item[element]);
-  }
+  console.log(`${count++}: ${item}`);
 };
