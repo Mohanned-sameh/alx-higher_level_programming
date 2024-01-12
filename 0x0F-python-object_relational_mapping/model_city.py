@@ -1,25 +1,20 @@
 #!/usr/bin/python3
 """
-Class: City
-inherits from Base imported from model_state
-links to the MySQL table cities
-class attribute id that represents a column of an auto-generated,
-unique integer, cant be null and is a primary key
-class attribute name that represents a column of a string
-with maximum 128 characters and cant be null
-class attribute state_id that represents a column of an integer,
-cant be null and is a foreign key to states.id
+Class definition of a City
 """
+
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-
-
-Base = declarative_base()
+from model_state import Base
 
 
 class City(Base):
     """
-    Class City
+    City class that inherits from Base
+
+    Attributes:
+        id: Id city
+        name: Name of the city
+        state_id: State id
     """
 
     __tablename__ = "cities"
