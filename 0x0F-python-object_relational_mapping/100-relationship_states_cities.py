@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.schema import Table
 
 if __name__ == "__main__":
+    # creates engine
     engine = create_engine(
         "mysql+mysqldb://{}:{}@localhost/{}".format(
             sys.argv[1], sys.argv[2], sys.argv[3]
@@ -17,11 +18,16 @@ if __name__ == "__main__":
         pool_pre_ping=True,
     )
     Base.metadata.create_all(engine)
-
+    # binds sessions
     session = Session(engine)
+    # new city
     new_city = City(name="San Francisco")
+    # new state
     new = State(name="California")
     new.cities.append(new_city)
+    # adds all
     session.add_all([new, new_city])
+    # commits changes
     session.commit()
+    # closses connections
     session.close()
