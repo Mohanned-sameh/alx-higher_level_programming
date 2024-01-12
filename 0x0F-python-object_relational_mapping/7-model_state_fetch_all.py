@@ -2,7 +2,6 @@
 """
 script that lists all states from the database hbtn_0e_0_usa
 """
-import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sys import argv
