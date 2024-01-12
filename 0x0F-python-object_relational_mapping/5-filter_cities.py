@@ -16,11 +16,10 @@ if __name__ == "__main__":
     cur = db.cursor()
     # executes a SELECT query to retrieve all cities from the database
     cur.execute(
-        "SELECT cities.name FROM cities\
-                INNER JOIN states ON cities.state_id = states.id\
-                WHERE states.name = %s\
-                ORDER BY cities.id ASC",
-        (argv[4],),
+        """
+        SELECT cities.name FROM cities JOIN states
+        ON cities.state_id = states.id WHERE states.name = %s ORDER BY cities.id 
+          """,
     )
     # fetches all rows from the cursor object and prints them to the console
     rows = cur.fetchall()
